@@ -1,5 +1,4 @@
 require "net/http"
-require "active_support"
 
 class HttpRequestor
   def initialize(domain)
