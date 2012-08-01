@@ -1,0 +1,11 @@
+= http-requestor
+
+A Wrapper around Net/HTTP which allows you to perform HTTP Requests.
+
+= Usage
+
+http = HttpRequestor.new("http://www.mydomain.com")
+response = http.get("/get_path")
+response = http.post("/post_path")
+response = http.put("/put_path")
+response = http.delete("/delete_path")

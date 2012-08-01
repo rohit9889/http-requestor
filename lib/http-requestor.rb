@@ -54,7 +54,7 @@ class HttpRequestor
 
   def self.request(domain, request_type, request_path, data={}, headers={})
     data = data.to_query if data.is_a?(Hash)
-    request = Requestor.new(domain)
+    request = HttpRequestor.new(domain)
     if request_type == "GET"
       return request.get(request_path, data, headers)
     elsif request_type == "POST"
