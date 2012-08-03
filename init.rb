@@ -1,1 +1,1 @@
-require File.join(File.dirname(__FILE__), "lib", "http-requestor")
+require File.dirname(__FILE__) + "lib" + "http-requestor"
