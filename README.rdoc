@@ -4,7 +4,7 @@ A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple 
 
 = Usage
 
-http = HttpRequestor.new("http://www.mydomain.com")::  This will initialize the HttpRequestor class
+http = HttpRequestor.new("http://www.mydomain.com") # This will initialize the HttpRequestor class
 
 [Sending Calls to the initialized domain] response = http.get("/get_path")
 
