@@ -1,15 +1,20 @@
 = http-requestor
 
-A Wrapper around Net/HTTP which allows you to perform HTTP Requests.
+A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple way.
 
 = Usage
 
-http = HttpRequestor.new("http://www.mydomain.com")
+http = HttpRequestor.new("http://www.mydomain.com")::  This will initialize the HttpRequestor class
 
-response = http.get("/get_path")
+[Sending Calls to the initialized domain] response = http.get("/get_path")
 
-response = http.post("/post_path")
+                                          response = http.post("/post_path")
 
-response = http.put("/put_path")
+                                          response = http.put("/put_path")
 
-response = http.delete("/delete_path")
+                                          response = http.delete("/delete_path")
+
+                                          The above methods also accept optional parameters, for
+                                          
+                                          * Parameters to be sent to the request
+                                          * Headers to be sent to the request
