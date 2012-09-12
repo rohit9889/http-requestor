@@ -22,8 +22,8 @@ http = HttpRequestor.new("http://www.mydomain.com") # This will initialize the H
 [Alternatively you can also use the method]  HttpRequestor.request
 
                                              which takes the paramters in order
-                                               * domain       #=> for example: "http://www.some_domain.com"
-                                               * request_type #=> GET|POST|PUT|DELETE
-                                               * path         #=> for example: "/some_path"
-                                               * parameters   #=> this is an optional parameter, if you want to send some parameters alongwith the request, you can pass a hash with
-                                               * headers      #=> this is also an optional parameter, you can pass a hash with stringified keys
+                                             * domain       #=> for example: "http://www.some_domain.com"
+                                             * request_type #=> GET|POST|PUT|DELETE
+                                             * path         #=> for example: "/some_path"
+                                             * parameters   #=> this is an optional parameter, if you want to send some parameters alongwith the request, you can pass a hash with
+                                             * headers      #=> this is also an optional parameter, you can pass a hash with stringified keys
