@@ -1,68 +1,75 @@
 require "net/http"
+require "net/https"
+require "uri"
 
 class HttpRequestor
   def initialize(domain)
+    raise InvalidURISchemeException, "Please send a valid URI scheme." if domain.match(/(http|https):\/\//).nil?
     @defaults = {:domain => domain}
+    uri = URI.parse(@defaults[:domain])
+    if uri.scheme == "http"
+      @http = Net::HTTP.new(uri.host, uri.port)
+    else
+      @http = Net::HTTP.new(uri.host, uri.port)
+      @http.use_ssl = true
+      @http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    end
   end
 
-  def get(path,data,headers=nil)
-    uri = URI.parse(@defaults[:domain])
-    http = Net::HTTP.new(uri.host, uri.port)
+  def get(path,data="",headers=nil)
     if headers == nil
-      response = http.send_request('GET',path,data)
+      response = @http.send_request('GET',path,data)
     else
-      response = http.send_request('GET',path,data,headers)
+      response = @http.send_request('GET',path,data,headers)
     end
     response
   end
 
-  def post(path,data,headers=nil)
-    uri = URI.parse(@defaults[:domain])
-    http = Net::HTTP.new(uri.host, uri.port)
+  def post(path,data="",headers=nil)
     if headers == nil
-      response = http.send_request('POST',path,data)
+      response = @http.send_request('POST',path,data)
     else
-      response = http.send_request('POST',path,data,headers)
+      response = @http.send_request('POST',path,data,headers)
     end
     response
   end
 
-  def put(path,data,headers=nil)
-    uri = URI.parse(@defaults[:domain])
-    http = Net::HTTP.new(uri.host, uri.port)
-
+  def put(path,data="",headers=nil)
     if headers == nil
-      response = http.send_request('PUT',path,data)
+      response = @http.send_request('PUT',path,data)
     else
-      response = http.send_request('PUT',path,data,headers)
+      response = @http.send_request('PUT',path,data,headers)
     end
     response
   end
   
-  def delete(path,data,headers=nil)
-    uri = URI.parse(@defaults[:domain])
-    http = Net::HTTP.new(uri.host, uri.port)
-
+  def delete(path,data="",headers=nil)
     if headers == nil
-      response = http.send_request('DELETE',path,data)
+      response = @http.send_request('DELETE',path,data)
     else
-      response = http.send_request('DELETE',path,data,headers)
+      response = @http.send_request('DELETE',path,data,headers)
     end
     response
   end
 
-  def self.request(domain, request_type, request_path, data={}, headers={})
-    data = data.to_query
-    request = HttpRequestor.new(domain)
+  def self.request(domain, request_type, request_path, data="", headers={})
+    request_type.upcase!
+    raise InvalidRequestTypeException, "Please pass a valid request type." unless valid_request_types.include?(request_type)
+    req = HttpRequestor.new(domain)
+    data = data.empty? ? "" : data.to_query
     if request_type == "GET"
-      return request.get(request_path, data, headers)
+      return req.get(request_path, data, headers)
     elsif request_type == "POST"
-      return request.post(request_path, data, headers)
+      return req.post(request_path, data, headers)
     elsif request_type == "PUT"
-      return request.put(request_path, data, headers)
+      return req.put(request_path, data, headers)
     elsif request_type == "DELETE"
-      return request.delete(request_path, data, headers)
+      return req.delete(request_path, data, headers)
     end
+  end
+
+  def self.valid_request_types
+    ["GET", "POST", "UPDATE", "DELETE"]
   end
 end
 
@@ -90,4 +97,10 @@ class String
   def to_param
     to_s
   end
+end
+
+class InvalidRequestTypeException < Exception
+end
+
+class InvalidURISchemeException < Exception
 end
