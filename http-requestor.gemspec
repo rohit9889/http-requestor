@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'http-requestor'
-  s.version = '0.0.3'
+  s.version = '0.0.4'
   s.date = Date.today
   
   s.summary = "A Wrapper around Net/HTTP which allows you to perform HTTP Requests."

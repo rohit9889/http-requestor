@@ -23,7 +23,7 @@ A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple 
   # parameters   => this is an optional parameter, if you want to send some parameters alongwith the request, you can pass a hash with
   # headers      => this is also an optional parameter, you can pass a hash with stringified keys
 
-=== Get a reqsponse right away  
+=== Get a response right away  
 
   HttpRequestor.request(domain, request_type, path, parameters, headers)
   # domain       => for example: "http://www.some_domain.com"
