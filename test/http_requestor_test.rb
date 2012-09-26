@@ -11,7 +11,7 @@ class HttpRequestorTest < Test::Unit::TestCase
     assert_nothing_raised(InvalidURISchemeException) { HttpRequestor.new("http://www.google.com") }
     assert_nothing_raised(InvalidURISchemeException) { HttpRequestor.new("https://www.yahoo.com") }
   end
-  
+
   def test_should_raise_error_on_invalid_request_type
     assert_raise(InvalidRequestTypeException) { HttpRequestor.request("http://en.wikibooks.org", "OPTIONS", "/wiki/Ruby_Programming/Unit_testing#A_Simple_Introduction") }
   end
