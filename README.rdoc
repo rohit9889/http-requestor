@@ -11,8 +11,8 @@ A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple 
 
 === Initialize a domain, and send request to multiple paths
 
-  http = HttpRequestor.new("http://www.mydomain.com")
-  # This will initialize the HttpRequestor class
+  http = HTTP::Requestor.new("http://www.mydomain.com")
+  # This will initialize the HTTP::Requestor class
 
   get_request    = http.get(path, parameters, headers)
   post_request   = http.post(path, parameters, headers)
@@ -25,7 +25,7 @@ A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple 
 
 === Get a response right away  
 
-  HttpRequestor.request(domain, request_type, path, parameters, headers)
+  HTTP::Requestor.request(domain, request_type, path, parameters, headers)
   # domain       => for example: "http://www.some_domain.com"
   # request_type => GET|POST|PUT|DELETE
   # path         => for example: "/some_path"
@@ -34,7 +34,7 @@ A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple 
   
 OR you can do it the other way
   
-  HttpRequestor.request_with_url(url, request_type, data, headers)
+  HTTP::Requestor.request_with_url(url, request_type, data, headers)
   # url          => for example: "http://www.some_domain.com/some_path_value"
   # request_type => GET|POST|PUT|DELETE
   # parameters   => this is an optional parameter, if you want to send some parameters alongwith the request, you can pass a hash with
@@ -42,11 +42,24 @@ OR you can do it the other way
   
 === HTTP Basic Authentication
 
-  HttpRequestor.send_basic_auth_request(url, username, password)
+  HTTP::Requestor.send_basic_auth_request(url, username, password)
   # url      => for example: "http://www.some_domain.com/some_path_value" only GET URL's supported currently
   # username => basic_auth_username
   # password => basic_auth_password
+
+=== Multipart Form Post
+
+  uri = "http://some_domain/somepath"
+  data = {:file => File.open("testfile.txt")}
+  response = HTTP::Requestor.multipart_request(uri, "post | put", data)
   
+  # If you already have the instance of HTTP::Requestor class then you can upload files as follows:
+  
+  http = HTTP::Requestor.new("http://www.mydomain.com")
+  response = http.post_multipart(some_path, {:file => File.open("testfile.txt")})
+  response = http.put_multipart(some_path, {:file => File.open("testfile.txt")})
+  
+
 == Issues and Suggestions
 
 Please report all the issues in the Github Issues Page, suggestions are also welcome.

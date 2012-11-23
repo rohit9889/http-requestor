@@ -1,14 +1,19 @@
 Gem::Specification.new do |s|
   s.name = 'http-requestor'
-  s.version = '0.0.4'
+  s.version = '1.0.0'
   s.date = Date.today
   
   s.summary = "A Wrapper around Net/HTTP which allows you to perform HTTP Requests."
-  s.description = "A Wrapper around Net/HTTP which allows you to perform HTTP Requests."
+  s.description = <<-EOF
+    A Wrapper around Net/HTTP which allows you to perform HTTP Requests.
+    Gives you a simple API interface to send multipart requests.
+  EOF
   
   s.author = "Rohit Sharma"
   s.email = "rohit0981989@gmail.com"
   s.homepage = "http://github.com/rohit9889/http-requestor"
+  s.license = 'MIT'
+  s.add_dependency('mime-types', '>= 1.17.2')
   
   s.require_paths = ['lib']
   

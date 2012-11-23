@@ -1,0 +1,12 @@
+= CHANGELOG
+
+== 1.0.0
+
+  Previously HttpRequestor class was used to send the requests.
+  Made some changes and changed the class hierarchy.
+  Now HTTP::Requestor will have to be used.
+  
+  Added feature to upload files(send multipart requests).
+  
+  HttpRequestor class removed
+  HTTP::Requestor class added
