@@ -20,7 +20,7 @@ A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple 
   delete_request = http.delete(path, parameters, headers)
   
   # path         => for example: "/some_path"
-  # parameters   => this is an optional parameter, if you want to send some parameters alongwith the request, you can pass a hash with
+  # parameters   => this is an optional parameter, if you want to send some parameters alongwith the request
   # headers      => this is also an optional parameter, you can pass a hash with stringified keys
 
 === Get a response right away  
@@ -29,7 +29,7 @@ A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple 
   # domain       => for example: "http://www.some_domain.com"
   # request_type => GET|POST|PUT|DELETE
   # path         => for example: "/some_path"
-  # parameters   => this is an optional parameter, if you want to send some parameters alongwith the request, you can pass a hash with
+  # parameters   => this is an optional parameter, if you want to send some parameters alongwith the request
   # headers      => this is also an optional parameter, you can pass a hash with stringified keys
   
 OR you can do it the other way
@@ -37,7 +37,7 @@ OR you can do it the other way
   HTTP::Requestor.request_with_url(url, request_type, data, headers)
   # url          => for example: "http://www.some_domain.com/some_path_value"
   # request_type => GET|POST|PUT|DELETE
-  # parameters   => this is an optional parameter, if you want to send some parameters alongwith the request, you can pass a hash with
+  # parameters   => this is an optional parameter, if you want to send some parameters alongwith the request
   # headers      => this is also an optional parameter, you can pass a hash with stringified keys
   
 === HTTP Basic Authentication
