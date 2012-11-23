@@ -136,6 +136,16 @@ class Symbol
   end
 end
 
+class NilClass
+  def to_query(key)
+    to_s.to_query(key)
+  end
+
+  def to_param
+    to_s
+  end
+end
+
 class File
   require 'mime/types'
   def original_filename
