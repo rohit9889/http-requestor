@@ -1,6 +1,7 @@
 require "net/http"
 require "net/https"
 require "uri"
+require File.dirname(__FILE__) + "/http_requestor_multipart"
 
 module HTTP
   class Requestor
