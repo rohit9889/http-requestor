@@ -95,7 +95,7 @@ module HTTP
     end
   
     def self.valid_request_types
-      ["GET", "POST", "UPDATE", "DELETE"]
+      ["GET", "POST", "PUT", "DELETE"]
     end
   end
 end

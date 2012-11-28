@@ -10,3 +10,20 @@
   
   HttpRequestor class removed
   HTTP::Requestor class added
+
+
+== 1.0.1
+  
+  Fixed issue of "undefined method `to_query' for nil:NilClass"
+
+
+== 1.0.2
+
+  Fixed issue in require, which stopped file/multipart uploads
+  README modified
+  Example Added
+
+
+== 1.0.3
+
+  Bug Fixed -> Valid request types method returned an array which had a value 'UPDATE' instead of 'PUT'. Because of this PUT requests were not functioning
