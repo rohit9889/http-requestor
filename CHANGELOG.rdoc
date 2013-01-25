@@ -27,3 +27,9 @@
 == 1.0.3
 
   Bug Fixed -> Valid request types method returned an array which had a value 'UPDATE' instead of 'PUT'. Because of this PUT requests were not functioning
+
+== 1.0.4
+
+  Added more HTTP Verbs OPTIONS, PATCH, MOVE, HEAD, TRACE
+  README modified
+  Test Case Added

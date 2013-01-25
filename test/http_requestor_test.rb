@@ -24,9 +24,13 @@ class HttpRequestorTest < Test::Unit::TestCase
   end
   
   def test_should_post_multiple_files
-    uri = "http://www.imaaage.com/upload.php"
-    data = {:image => [File.open("images.jpg"), File.open("images.jpg")]}
-
-    assert_equal("200", HTTP::Requestor.multipart_request(uri, "post", data).code)
+    uri = "https://www.google.co.in/searchbyimage/upload"
+    data = {:q => [File.open("images.jpg"), File.open("images.jpg")]}
+    assert_equal("302", HTTP::Requestor.multipart_request(uri, "post", data).code)
+  end
+  
+  def test_should_send_options_request
+    http = HTTP::Requestor.new("http://www.askapache.com")
+    assert_equal("200", http.options("/online-tools/request-method-scanner/").code)
   end
 end

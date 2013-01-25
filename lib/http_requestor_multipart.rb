@@ -28,7 +28,7 @@ module HTTP
   
     def self.multipart_request(domain, request_type, data={}, headers={}, options={})
       request_type.to_s.upcase!
-      request_type = valid_request_types[0] unless valid_request_types.include?(request_type)
+      request_type = "POST" unless ["POST", "PUT"].include?(request_type)
       req = self.new(domain, options)
 
       if request_type == "POST"

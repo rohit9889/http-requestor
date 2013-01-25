@@ -60,6 +60,56 @@ module HTTP
       response
     end
     
+    def options(path,data={},headers=nil)
+      data_to_query(data)
+      if headers == nil
+        response = @http.send_request('OPTIONS', path, @defaults[:data])
+      else
+        response = @http.send_request('OPTIONS', path, @defaults[:data], headers)
+      end
+      response
+    end
+    
+    def patch(path,data={},headers=nil)
+      data_to_query(data)
+      if headers == nil
+        response = @http.send_request('PATCH', path, @defaults[:data])
+      else
+        response = @http.send_request('PATCH', path, @defaults[:data], headers)
+      end
+      response
+    end
+    
+    def move(path,data={},headers=nil)
+      data_to_query(data)
+      if headers == nil
+        response = @http.send_request('MOVE', path, @defaults[:data])
+      else
+        response = @http.send_request('MOVE', path, @defaults[:data], headers)
+      end
+      response
+    end
+    
+    def head(path,data={},headers=nil)
+      data_to_query(data)
+      if headers == nil
+        response = @http.send_request('HEAD', path, @defaults[:data])
+      else
+        response = @http.send_request('HEAD', path, @defaults[:data], headers)
+      end
+      response
+    end
+    
+    def trace(path,data={},headers=nil)
+      data_to_query(data)
+      if headers == nil
+        response = @http.send_request('TRACE', path, @defaults[:data])
+      else
+        response = @http.send_request('TRACE', path, @defaults[:data], headers)
+      end
+      response
+    end
+    
     def data_to_query(data)
       @defaults[:data] = (data.nil? || data.empty?) ? "" : data.to_query
     end
@@ -77,6 +127,16 @@ module HTTP
         return req.put(request_path, data, headers)
       elsif request_type == "DELETE"
         return req.delete(request_path, data, headers)
+      elsif request_type == "OPTIONS"
+        return req.options(request_path, data, headers)
+      elsif request_type == "PATCH"
+        return req.patch(request_path, data, headers)
+      elsif request_type == "MOVE"
+        return req.move(request_path, data, headers)
+      elsif request_type == "HEAD"
+        return req.head(request_path, data, headers)
+      elsif request_type == "TRACE"
+        return req.trace(request_path, data, headers)
       end
     end
     
@@ -95,7 +155,7 @@ module HTTP
     end
   
     def self.valid_request_types
-      ["GET", "POST", "PUT", "DELETE"]
+      ["GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "MOVE", "HEAD", "TRACE"]
     end
   end
 end
