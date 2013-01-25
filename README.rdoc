@@ -61,22 +61,22 @@ OR you can do it the other way
 
 === More HTTP Verbs
 
-  You can also use other HTTP Verbs such as OPTIONS, PATCH, MOVE, HEAD, TRACE
+You can also use other HTTP Verbs such as OPTIONS, PATCH, MOVE, HEAD, TRACE
 
-  * By instantiating the HTTP::Requestor class
+* By instantiating the HTTP::Requestor class
 
-    http = HTTP::Requestor.new("http://www.mydomain.com")
+  http = HTTP::Requestor.new("http://www.mydomain.com")
 
-    http.options(path, parameters, headers)
-    http.patch(path, parameters, headers)
-    http.move(path, parameters, headers)
-    http.head(path, parameters, headers)
-    http.trace(path, parameters, headers)
+  http.options(path, parameters, headers)
+  http.patch(path, parameters, headers)
+  http.move(path, parameters, headers)
+  http.head(path, parameters, headers)
+  http.trace(path, parameters, headers)
 
-  * Directly calling the request method
+* Directly calling the request method
 
-    HTTP::Requestor.request(domain, request_type, path, parameters, headers)
-    # where request type can be any value within GET, POST, PUT, DELETE, OPTIONS, PATCH, MOVE, HEAD, TRACE
+  HTTP::Requestor.request(domain, request_type, path, parameters, headers)
+  # where request type can be any value within GET, POST, PUT, DELETE, OPTIONS, PATCH, MOVE, HEAD, TRACE
 
 == Issues and Suggestions
 
