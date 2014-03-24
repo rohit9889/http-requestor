@@ -1,4 +1,4 @@
-= http-requestor
+= http-requestor {<img src="https://badge.fury.io/rb/http-requestor.png" alt="Gem Version" />}[http://badge.fury.io/rb/http-requestor]
 
 A Wrapper around Net/HTTP which allows you to perform HTTP Requests in a simple way.
 
